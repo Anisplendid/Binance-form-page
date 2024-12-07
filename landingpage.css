@@ -1,0 +1,21 @@
+/* Style for the landing page */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222; /* Binance yellow background color */
+  }
+  
+  /* Center the logo in the middle of the page */
+  .landing-page {
+    text-align: center;
+  }
+  
+  /* Style for the Binance logo */
+  .logo {
+    width: 150px; /* Adjust the logo size as needed */
+    height: auto;
+  }
