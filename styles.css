@@ -81,3 +81,29 @@ body {
     color: #888;
     margin-top: 20px;
   }
+
+   /* Center the container */
+.otp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between boxes */
+  margin: 20px;
+}
+
+/* Style individual input boxes */
+.otp-box {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.otp-box:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
